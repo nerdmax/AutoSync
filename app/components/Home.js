@@ -21,7 +21,7 @@ export default class Home extends Component<> {
           .replace('node_modules\\electron\\dist\\resources\\default_app.asar', '/app'))
         : remote.app.getAppPath();
 
-    this.state = { projectNames: '', projectConfigs: [] };
+    this.state = { projectConfigs: [], targetProjectName: '', targetProjectConfig: {} };
   }
 
   componentDidMount() {
@@ -36,18 +36,26 @@ export default class Home extends Component<> {
     });
   }
 
-  changeProjectNames = event => {
-    this.setState({ projectNames: event.target.value }, () => console.log(this.state));
+  changeProjectName = event => {
+    const targetProjectName = event.target.value;
+    const targetProjectConfig = this.state.projectConfigs.find(projectConfig => projectConfig.projectName === targetProjectName);
+    this.setState({ targetProjectName, targetProjectConfig }, () => console.log(this.state));
   };
 
   startSync = () => {
     const displayPanelViewPath = path.join(this.appPath, 'display-panel\\display-panel.html');
-    console.log(this.appPath);
-    console.log(displayPanelViewPath);
-
     const { BrowserWindow } = remote;
-    const win = new BrowserWindow();
+    let win = new BrowserWindow();
     win.loadURL(displayPanelViewPath);
+    win.on('close', () => {
+      win = null;
+    });
+    win.webContents.on('did-finish-load', () => {
+      win.webContents.send('sendSettings', this.state.targetProjectConfig);
+      win.maximize();
+      win.webContents.openDevTools();
+    });
+    win.show();
   };
 
   render() {
@@ -71,8 +79,8 @@ export default class Home extends Component<> {
           <RadioGroup
             aria-label="porjectNames"
             name="porjectNames"
-            value={this.state.projectNames}
-            onChange={this.changeProjectNames}
+            value={this.state.targetProjectName}
+            onChange={this.changeProjectName}
           >
             {this.state.projectConfigs.map(projectConfig => (
               <FormControlLabel
