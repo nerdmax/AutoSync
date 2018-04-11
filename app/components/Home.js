@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { remote } from 'electron';
 
 import Radio, { RadioGroup } from 'material-ui/Radio';
-import { FormLabel, FormControl, FormControlLabel, FormHelperText } from 'material-ui/Form';
+import { FormLabel, FormControl, FormControlLabel } from 'material-ui/Form';
 
 const jsonfile = require('jsonfile');
 
