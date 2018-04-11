@@ -1,25 +1,48 @@
 // @flow
 import path from 'path';
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { remote } from 'electron';
 
-import styles from './Home.css';
+import Radio, { RadioGroup } from 'material-ui/Radio';
+import { FormLabel, FormControl, FormControlLabel, FormHelperText } from 'material-ui/Form';
 
-type Props = {};
+const jsonfile = require('jsonfile');
 
-export default class Home extends Component<Props> {
-  props: Props;
+// import styles from './Home.css';
 
-  startSync = () => {
-    const appPath =
+export default class Home extends Component<> {
+  constructor(props) {
+    super(props);
+    this.appPath =
       process.env.NODE_ENV === 'development'
         ? path.join(remote.app
           .getAppPath()
           .replace('node_modules\\electron\\dist\\resources\\default_app.asar', '/app'))
         : remote.app.getAppPath();
-    const displayPanelViewPath = path.join(appPath, 'display-panel\\display-panel.html');
-    console.log(appPath);
+
+    this.state = { projectNames: '', projectConfigs: [] };
+  }
+
+  componentDidMount() {
+    this.getProjectConfig();
+  }
+
+  getProjectConfig() {
+    const configFilePath = path.join(this.appPath, '/config/config.json');
+    jsonfile.readFile(configFilePath, (err, configFileObj) => {
+      console.log(configFileObj);
+      this.setState({ projectConfigs: configFileObj.config }, () => console.log(this.state));
+    });
+  }
+
+  changeProjectNames = event => {
+    this.setState({ projectNames: event.target.value }, () => console.log(this.state));
+  };
+
+  startSync = () => {
+    const displayPanelViewPath = path.join(this.appPath, 'display-panel\\display-panel.html');
+    console.log(this.appPath);
     console.log(displayPanelViewPath);
 
     const { BrowserWindow } = remote;
@@ -35,12 +58,32 @@ export default class Home extends Component<Props> {
     // });
 
     return (
+      // <div>
+      //   <div className={styles.container} data-tid="container">
+      //     <h2>Home</h2>
+      //     <Link to="/counter">to Counter</Link>
+      //     <button onClick={this.startSync}>Start</button>
+      //   </div>
+      // </div>
       <div>
-        <div className={styles.container} data-tid="container">
-          <h2>Home</h2>
-          <Link to="/counter">to Counter</Link>
-          <button onClick={this.startSync}>Start</button>
-        </div>
+        <FormControl component="fieldset" required>
+          <FormLabel component="legend">Porject Names</FormLabel>
+          <RadioGroup
+            aria-label="porjectNames"
+            name="porjectNames"
+            value={this.state.projectNames}
+            onChange={this.changeProjectNames}
+          >
+            {this.state.projectConfigs.map(projectConfig => (
+              <FormControlLabel
+                value={projectConfig.projectName}
+                control={<Radio />}
+                label={projectConfig.projectName}
+                key={projectConfig.projectName}
+              />
+            ))}
+          </RadioGroup>
+        </FormControl>
       </div>
     );
   }

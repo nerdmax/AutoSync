@@ -1,0 +1,280 @@
+{
+  "config": [{
+      "projectName": "BlcWeb",
+      "cssFiles": ["C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/Content/siteblc.css"],
+      "cssBundleFile": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/Content/siteblc.min.css",
+      "jsFiles": [],
+      "jsBundleFile": "",
+      "cshtmlFiles": [
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/Scripts/main.js",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/Scripts/DfScripts/*.js",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/images/**/*.*",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/Views/**/*.*",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/bin/**/*.dll"
+      ],
+
+      "devBasePath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/",
+      "destPaths": ["//wwsyd01/Custom Websites/BLC"],
+      "uatpath": "/BLCEcomm",
+      "uatlaterpath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/uatlater/",
+      "webUrl": "localhost:30002",
+      "browserSyncPortNO": "8402",
+
+      "infoWebPath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms",
+      "ftpConfig": "BlcWebFtp.json",
+
+      "isSta": true,
+      "isUat": false,
+      "isUatLater": true
+    },
+    {
+      "projectName": "BlcWeb.staging",
+      "cssFiles": [],
+      "cssBundleFile": "",
+      "jsFiles": [],
+      "jsBundleFile": "",
+      "cshtmlFiles": [
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/Content/siteblc.min.css",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/Scripts/main.js",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/Scripts/DfScripts/*.js",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/images/**/*.*",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/Views/**/*.*",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/bin/**/*.dll",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/Areas/Dashboard/Contents/sitedashboard.min.css",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/Areas/Dashboard/Scripts/**/*.js",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/Areas/Dashboard/Views/**/*.cshtml"
+      ],
+
+      "devBasePath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/",
+      "destPaths": [],
+      "uatpath": "/BLCEcomm - Staging",
+      "uatlaterpath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/uatlater/",
+      "webUrl": "localhost:30002",
+      "browserSyncPortNO": "8411",
+
+      "infoWebPath": "",
+      "ftpConfig": "BlcWebFtp.json",
+
+      "isSta": false,
+      "isUat": true,
+      "isUatLater": false
+    },
+    {
+      "projectName": "BlcWeb.Cms",
+      "cssFiles": [
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/Content/siteblc.css"
+      ],
+      "cssBundleFile": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/Content/siteblc.min.css",
+      "jsFiles": [
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/scripts/webfontloader.js",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/scripts/modernizr-2.6.2.js",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/scripts/jquery-1.10.2.min.js",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/scripts/bootstrap.min.js",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/scripts/jquery.scrollToTop.js",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/scripts/main.js"
+      ],
+      "jsBundleFile": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/scripts/blcJs.js",
+      "cshtmlFiles": [
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/Views/**/*.cshtml",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/App_Plugins/**/*.*",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/bin/**/Adept.Core.dll"
+      ],
+
+      "devBasePath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/",
+      "destPaths": ["//wwsyd01/Custom Websites/BLC Info"],
+      "uatpath": "/BLCCosmetics",
+      "uatlaterpath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/uatlater/",
+      "webUrl": "localhost:30003",
+      "browserSyncPortNO": "8403",
+
+      "infoWebPath": "",
+      "ftpConfig": "BlcWeb.CmsFtp.json",
+
+      "isSta": true,
+      "isUat": true,
+      "isUatLater": true
+    },
+    {
+      "projectName": "BlcWeb.Dashboard",
+      "cssFiles": [
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/Areas/Dashboard/Contents/sitedashboard.css"
+      ],
+      "cssBundleFile": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/Areas/Dashboard/Contents/sitedashboard.min.css",
+      "jsFiles": [],
+      "jsBundleFile": "",
+      "cshtmlFiles": [
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/Areas/Dashboard/Scripts/**/*.js",
+        "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/Areas/Dashboard/Views/**/*.cshtml"
+      ],
+
+      "devBasePath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/",
+      "destPaths": ["//wwsyd01/Custom Websites/BLC"],
+      "uatpath": "/BLCEcomm",
+      "uatlaterpath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/uatlater/",
+      "webUrl": "localhost:30002",
+      "browserSyncPortNO": "8404",
+
+      "infoWebPath": "",
+      "ftpConfig": "BlcWebFtp.json",
+
+      "isSta": true,
+      "isUat": true,
+      "isUatLater": false
+    },
+    {
+      "projectName": "test",
+      "cssFiles": [],
+      "cssBundleFile": "",
+      "jsFiles": [],
+      "jsBundleFile": "",
+      "cshtmlFiles": ["C:/code/php/hilliePersonalWeb/roua-wp/**/*.*"],
+
+      "devBasePath": "C:/code/php/hilliePersonalWeb/roua-wp/",
+      "destPaths": [],
+      "uatpath": "/public_html/wp-content/themes/roua-wp",
+      "uatlaterpath": "",
+      "webUrl": "http://hollietinworth.com.au/",
+      "browserSyncPortNO": "40003",
+
+      "infoWebPath": "",
+      "ftpConfig": "hollieFtp.json",
+
+      "isSta": false,
+      "isUat": true,
+      "isUatLater": false
+    },
+    {
+      "projectName": "Vokins",
+      "cssFiles": [
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/css/bootstrap.css",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/css/jquery-ui.css",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/css/font-awesome.css",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/css/jquery.selectBoxIt.css",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/css/blueimp-gallery.css",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/css/Common.css",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/css/Vokins.css"
+      ],
+      "cssBundleFile": "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/css/bundle.min.css",
+      "jsFiles": [
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/js/angular.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/js/angular-cookies.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/App_Plugins/SurgaBlocks/js/SearchResult.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/App_Plugins/SurgaBlocks/js/SearchProperty.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/App_Plugins/SurgaBlocks/js/SurgaDirectives.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/App_Plugins/SurgaBlocks/js/WatchlistLinkBtnDirective.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/App_Plugins/CMSBlocks/js/TeamModal.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/App_Plugins/Subscribe/subscribeController.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/js/retinaDirective.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/js/bootstrap.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/js/ie10-viewport-bug-workaround.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/js/jquery-ui.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/js/jquery.selectBoxIt.min.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/js/jquery.matchHeight.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/js/main.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/js/activemenu.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/js/jquery.blueimp-gallery.min.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/js/jquery.backTop.js"
+      ],
+      "jsBundleFile": "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/js/surgajs.js",
+      "cshtmlFiles": [
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/App_Plugins/**/*.{css,js,html,manifest,cshtml}",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/Views/**/*.cshtml",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/bin/**/*.dll",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/App_Plugins/SurgaBlocks/Images/**/*.png"
+      ],
+
+      "devBasePath": "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/",
+      "destPaths": ["//wwsyd01/Umbraco/Vokins"],
+      "uatpath": "/site/wwwroot",
+      "uatlaterpath": "",
+      "webUrl": "localhost:10015",
+      "browserSyncPortNO": "20015",
+
+      "infoWebPath": "",
+      "ftpConfig": "vokinsFtp.json",
+
+      "isSta": true,
+      "isUat": true,
+      "isUatLater": false
+    },
+    {
+      "projectName": "DomainOffice",
+      "cssFiles": [
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/css/bootstrap.css",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/css/jquery-ui.css",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/css/font-awesome.css",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/css/jquery.selectBoxIt.css",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/css/blueimp-gallery.css",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/css/Common.css",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/css/DomainOffice.css"
+      ],
+      "cssBundleFile": "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/css/bundle.min.css",
+      "jsFiles": [
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/js/angular.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/js/angular-cookies.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/App_Plugins/SurgaBlocks/js/SearchResult.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/App_Plugins/SurgaBlocks/js/SearchProperty.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/App_Plugins/SurgaBlocks/js/SurgaDirectives.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/App_Plugins/SurgaBlocks/js/WatchlistLinkBtnDirective.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/App_Plugins/CMSBlocks/js/TeamModal.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/App_Plugins/Subscribe/subscribeController.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/js/retinaDirective.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/js/bootstrap.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/js/ie10-viewport-bug-workaround.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/js/jquery-ui.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/js/jquery.selectBoxIt.min.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/js/jquery.matchHeight.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/js/main.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/js/activemenu.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/js/jquery.blueimp-gallery.min.js",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/js/jquery.backTop.js"
+      ],
+      "jsBundleFile": "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/js/surgajs.js",
+      "cshtmlFiles": [
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/App_Plugins/**/*.{css,js,html,manifest,cshtml}",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/Views/**/*.cshtml",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/bin/**/*.dll",
+        "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/App_Plugins/SurgaBlocks/Images/**/*.png"
+      ],
+
+      "devBasePath": "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/",
+      "destPaths": ["//wwsyd01/Umbraco/DOS"],
+      "uatpath": "/site/wwwroot",
+      "uatlaterpath": "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/uatlatertest/",
+      "webUrl": "localhost:10018",
+      "browserSyncPortNO": "20018",
+
+      "infoWebPath": "",
+      "ftpConfig": "DomainOfficeFtp.json",
+
+      "isSta": true,
+      "isUat": false,
+      "isUatLater": true
+    },
+    {
+      "projectName": "Michelin",
+      "cssFiles": ["C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/dist/styles.css"],
+      "cssBundleFile": "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/dist/styles.min.css",
+      "jsFiles": [],
+      "jsBundleFile": "",
+      "cshtmlFiles": [
+        "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/Views/**/*.*",
+        "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/bin/**/*.dll"
+      ],
+
+      "devBasePath": "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/",
+      "destPaths": [""],
+      "uatpath": "",
+      "uatlaterpath": "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/uatlatertest/",
+      "webUrl": "localhost:8307",
+      "browserSyncPortNO": "8407",
+
+      "infoWebPath": "C:/Max/ERP/Michelin/Publish",
+      "ftpConfig": "",
+
+      "isSta": false,
+      "isUat": false,
+      "isUatLater": false
+    }
+  ]
+}
