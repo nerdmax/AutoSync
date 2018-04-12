@@ -37,6 +37,8 @@
     "files": [
       "dist/",
       "node_modules/",
+      "config/",
+      "display-panel/",
       "app.html",
       "main.prod.js",
       "main.prod.js.map",
@@ -191,7 +193,6 @@
     "electron-debug": "^1.5.0",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
-    "jsonfile": "^4.0.0",
     "lodash": "^4.17.5",
     "material-ui": "^1.0.0-beta.41",
     "moment": "^2.22.0",
