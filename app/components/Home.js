@@ -7,7 +7,7 @@ import { remote } from 'electron';
 import Radio, { RadioGroup } from 'material-ui/Radio';
 import { FormLabel, FormControl, FormControlLabel } from 'material-ui/Form';
 
-const jsonfile = require('jsonfile');
+const fs = require('fs');
 
 // import styles from './Home.css';
 
@@ -20,7 +20,8 @@ export default class Home extends Component<> {
           .getAppPath()
           .replace('node_modules\\electron\\dist\\resources\\default_app.asar', '/app'))
         : remote.app.getAppPath();
-
+    console.log('remote.app.getAppPath()', remote.app.getAppPath());
+    console.log('this.appPath', this.appPath);
     this.state = { projectConfigs: [], targetProjectName: '', targetProjectConfig: {} };
   }
 
@@ -29,10 +30,18 @@ export default class Home extends Component<> {
   }
 
   getProjectConfig() {
-    const configFilePath = path.join(this.appPath, '/config/config.json');
-    jsonfile.readFile(configFilePath, (err, configFileObj) => {
-      console.log(configFileObj);
-      this.setState({ projectConfigs: configFileObj.config }, () => console.log(this.state));
+    const configFilePath = path.join(this.appPath, 'config/config.json');
+    fs.readFile(configFilePath, 'utf8', (err, configFileData) => {
+      if (err) {
+        console.error('read file error', err);
+      }
+      try {
+        const configFileObj = JSON.parse(configFileData);
+        console.log(configFileObj);
+        this.setState({ projectConfigs: configFileObj.config }, () => console.log(this.state));
+      } catch (error) {
+        console.error('pase json error', error);
+      }
     });
   }
 
@@ -43,7 +52,7 @@ export default class Home extends Component<> {
   };
 
   startSync = () => {
-    const displayPanelViewPath = path.join(this.appPath, 'display-panel\\display-panel.html');
+    const displayPanelViewPath = path.join(this.appPath, 'display-panel/display-panel.html');
     const { BrowserWindow } = remote;
     let win = new BrowserWindow();
     win.loadURL(displayPanelViewPath);
@@ -51,7 +60,10 @@ export default class Home extends Component<> {
       win = null;
     });
     win.webContents.on('did-finish-load', () => {
-      win.webContents.send('sendSettings', this.state.targetProjectConfig);
+      win.webContents.send('sendSettings', {
+        targetProjectConfig: this.state.targetProjectConfig,
+        ftpConfigPath: path.join(this.appPath, `config/${this.state.targetProjectConfig.ftpConfig}`)
+      });
       win.maximize();
       win.webContents.openDevTools();
     });

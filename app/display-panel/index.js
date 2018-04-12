@@ -20,25 +20,26 @@ const cssnano = require('cssnano');
 
 const tap = require('gulp-tap');
 const browserSync = require('browser-sync').create();
-const jsonfile = require('jsonfile');
 const path = require('path');
 const streamCombiner = require('stream-combiner');
 const watch = require('gulp-watch');
 const gutil = require('gulp-util');
 const ftp = require('vinyl-ftp');
 
+const fs = require('fs');
+
 require('electron').ipcRenderer.on('sendSettings', (event, message) => {
   const settings = message;
 
   // *Setup related files
   console.log('settings passed from main control panel', settings);
-  const { projectName } = settings;
-  console.log(projectName);
-  const configFile = path.join(__dirname, '/../config/config.json');
-  const allConfig = jsonfile.readFileSync(configFile);
-  console.log('allConfig', allConfig);
+  // const { projectName } = settings;
+  // console.log(projectName);
+  // const configFile = path.join(__dirname, '/../config/config.json');
+  // const allConfig = JSON.parse(fs.readFileSync(configFile, 'utf8'));
+  // console.log('allConfig', allConfig);
 
-  const config = _.find(allConfig.config, o => o.projectName === projectName);
+  const config = settings.targetProjectConfig;
   console.log(config);
 
   const {
@@ -59,10 +60,7 @@ require('electron').ipcRenderer.on('sendSettings', (event, message) => {
     isUatLater
   } = config;
 
-  const ftpConfig =
-    config.ftpConfig !== ''
-      ? jsonfile.readFileSync(path.join(__dirname, `/../config/${config.ftpConfig}`))
-      : '';
+  const ftpConfig = JSON.parse(fs.readFileSync(settings.ftpConfigPath, 'utf8'));
 
   // *Log out mode status and check whether user has specified sta/uat details
   let devmodeflag = true;
