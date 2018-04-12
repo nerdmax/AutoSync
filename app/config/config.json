@@ -21,7 +21,7 @@
       "browserSyncPortNO": "8402",
 
       "infoWebPath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms",
-      "ftpConfig": "BlcWebFtp.json",
+      "ftpConfig": "BLCWeb.ftp.json",
 
       "isSta": true,
       "isUat": false,
@@ -53,7 +53,7 @@
       "browserSyncPortNO": "8411",
 
       "infoWebPath": "",
-      "ftpConfig": "BlcWebFtp.json",
+      "ftpConfig": "BLCWeb.ftp.json",
 
       "isSta": false,
       "isUat": true,
@@ -88,7 +88,7 @@
       "browserSyncPortNO": "8403",
 
       "infoWebPath": "",
-      "ftpConfig": "BlcWeb.CmsFtp.json",
+      "ftpConfig": "BLCWeb.ftp.json",
 
       "isSta": true,
       "isUat": true,
@@ -115,7 +115,7 @@
       "browserSyncPortNO": "8404",
 
       "infoWebPath": "",
-      "ftpConfig": "BlcWebFtp.json",
+      "ftpConfig": "BLCWeb.ftp.json",
 
       "isSta": true,
       "isUat": true,
@@ -137,7 +137,7 @@
       "browserSyncPortNO": "40003",
 
       "infoWebPath": "",
-      "ftpConfig": "hollieFtp.json",
+      "ftpConfig": "hollie.ftp.json",
 
       "isSta": false,
       "isUat": true,
@@ -191,7 +191,7 @@
       "browserSyncPortNO": "20015",
 
       "infoWebPath": "",
-      "ftpConfig": "vokinsFtp.json",
+      "ftpConfig": "vokins.ftp.json",
 
       "isSta": true,
       "isUat": true,
@@ -245,7 +245,7 @@
       "browserSyncPortNO": "20018",
 
       "infoWebPath": "",
-      "ftpConfig": "DomainOfficeFtp.json",
+      "ftpConfig": "DomainOffice.ftp.json",
 
       "isSta": true,
       "isUat": false,
