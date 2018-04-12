@@ -92,6 +92,8 @@ export default class Home extends Component<> {
             ))}
           </RadioGroup>
         </FormControl>
+
+        <button onClick={this.startSync}>Start</button>
       </div>
     );
   }
