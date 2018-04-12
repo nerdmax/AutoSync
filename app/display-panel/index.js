@@ -60,7 +60,7 @@ require('electron').ipcRenderer.on('sendSettings', (event, message) => {
     isUatLater
   } = config;
 
-  const ftpConfig = JSON.parse(fs.readFileSync(settings.ftpConfigPath, 'utf8'));
+  const ftpConfig = settings.ftpConfigPath === '' ? {} : JSON.parse(fs.readFileSync(settings.ftpConfigPath, 'utf8'));
 
   // *Log out mode status and check whether user has specified sta/uat details
   let devmodeflag = true;
