@@ -40,7 +40,7 @@ export default class Home extends Component<> {
         console.log(configFileObj);
         this.setState({ projectConfigs: configFileObj.config }, () => console.log(this.state));
       } catch (error) {
-        console.error('pase json error', error);
+        console.error('parse json error', error);
       }
     });
   }
@@ -54,15 +54,24 @@ export default class Home extends Component<> {
   startSync = () => {
     const displayPanelViewPath = path.join(this.appPath, 'display-panel/display-panel.html');
     const { BrowserWindow } = remote;
+    const { targetProjectConfig } = this.state;
+    let ftpConfigInfo = {};
+    if (this.state.targetProjectConfig.ftpConfig !== '') {
+      const ftpConfigPath = path.join(
+        this.appPath,
+        `config/${this.state.targetProjectConfig.ftpConfig}`
+      );
+      ftpConfigInfo = JSON.parse(fs.readFileSync(ftpConfigPath, 'utf8'));
+    }
     let win = new BrowserWindow();
     win.loadURL(displayPanelViewPath);
     win.on('close', () => {
       win = null;
     });
     win.webContents.on('did-finish-load', () => {
-      win.webContents.send('sendSettings', {
-        targetProjectConfig: this.state.targetProjectConfig,
-        ftpConfigPath: path.join(this.appPath, `config/${this.state.targetProjectConfig.ftpConfig}`)
+      win.webContents.send('passInfo', {
+        targetProjectConfig,
+        ftpConfigInfo
       });
       win.maximize();
       win.webContents.openDevTools();

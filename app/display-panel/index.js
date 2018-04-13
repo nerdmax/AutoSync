@@ -26,21 +26,20 @@ const watch = require('gulp-watch');
 const gutil = require('gulp-util');
 const ftp = require('vinyl-ftp');
 
-const fs = require('fs');
-
-require('electron').ipcRenderer.on('sendSettings', (event, message) => {
-  const settings = message;
+require('electron').ipcRenderer.on('passInfo', (event, message) => {
+  const info = message;
 
   // *Setup related files
-  console.log('settings passed from main control panel', settings);
+  console.log('info passed from main control panel', info);
   // const { projectName } = settings;
   // console.log(projectName);
   // const configFile = path.join(__dirname, '/../config/config.json');
   // const allConfig = JSON.parse(fs.readFileSync(configFile, 'utf8'));
   // console.log('allConfig', allConfig);
 
-  const config = settings.targetProjectConfig;
-  console.log(config);
+  const { targetProjectConfig, ftpConfigInfo } = info;
+  console.log('targetProjectConfig', targetProjectConfig);
+  console.log('ftpConfigInfo', ftpConfigInfo);
 
   const {
     cssFiles,
@@ -58,9 +57,7 @@ require('electron').ipcRenderer.on('sendSettings', (event, message) => {
     isSta,
     isUat,
     isUatLater
-  } = config;
-
-  const ftpConfig = settings.ftpConfigPath === '' ? {} : JSON.parse(fs.readFileSync(settings.ftpConfigPath, 'utf8'));
+  } = targetProjectConfig;
 
   // *Log out mode status and check whether user has specified sta/uat details
   let devmodeflag = true;
@@ -99,9 +96,9 @@ require('electron').ipcRenderer.on('sendSettings', (event, message) => {
 
   const setupftp = () => {
     const UATConn = {
-      host: ftpConfig.host,
-      user: ftpConfig.user,
-      password: ftpConfig.password,
+      host: ftpConfigInfo.host,
+      user: ftpConfigInfo.user,
+      password: ftpConfigInfo.password,
       parallel: 1,
       log: gutil.log
     };
