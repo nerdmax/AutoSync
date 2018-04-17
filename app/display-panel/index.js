@@ -1,3 +1,4 @@
+// TODO: Need to fix BlcWeb.staging is displaying an error after start sync
 // import { remote } from 'electron';
 
 // console.log('aaaaaadfsdfd');
