@@ -73,6 +73,7 @@ class Home extends Component<> {
     const { BrowserWindow } = remote;
     const { targetProjectConfig } = this.state;
     let ftpConfigInfo = {};
+    console.log('output targetProjectConfig.projectName', targetProjectConfig.projectName);
     if (this.state.targetProjectConfig.ftpConfig !== '') {
       const ftpConfigPath = path.join(
         this.appPath,
@@ -80,7 +81,10 @@ class Home extends Component<> {
       );
       ftpConfigInfo = JSON.parse(fs.readFileSync(ftpConfigPath, 'utf8'));
     }
-    let win = new BrowserWindow();
+    let win = new BrowserWindow({
+      title: targetProjectConfig.projectName
+    });
+    console.log('output targetProjectConfig.projectName', targetProjectConfig.projectName);
     win.loadURL(displayPanelViewPath);
     win.on('close', () => {
       win = null;
