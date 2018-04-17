@@ -1,17 +1,34 @@
 // @flow
 import path from 'path';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
 import { remote } from 'electron';
 
+import { withStyles } from 'material-ui/styles';
+import Paper from 'material-ui/Paper';
+import Grid from 'material-ui/Grid';
 import Radio, { RadioGroup } from 'material-ui/Radio';
-import { FormLabel, FormControl, FormControlLabel } from 'material-ui/Form';
+import { FormControlLabel } from 'material-ui/Form';
+import Button from 'material-ui/Button';
+
+import ReactJson from 'react-json-view';
 
 const fs = require('fs');
 
+const styles = {
+  projectContainer: {
+    textAlign: 'center'
+  },
+  projectList: {
+    flexDirection: 'row'
+  },
+  projectItem: {}
+};
+
 // import styles from './Home.css';
 
-export default class Home extends Component<> {
+class Home extends Component<> {
   constructor(props) {
     super(props);
     this.appPath =
@@ -80,6 +97,7 @@ export default class Home extends Component<> {
   };
 
   render() {
+    const { classes } = this.props;
     // console.log(electron.remote.app);
     // remote.app.setAppUserModelId('org.develar.ElectronReact');
     // const myNotification = new Notification('Title', {
@@ -95,27 +113,44 @@ export default class Home extends Component<> {
       //   </div>
       // </div>
       <div>
-        <FormControl component="fieldset" required>
-          <FormLabel component="legend">Porject Names</FormLabel>
-          <RadioGroup
-            aria-label="porjectNames"
-            name="porjectNames"
-            value={this.state.targetProjectName}
-            onChange={this.changeProjectName}
-          >
-            {this.state.projectConfigs.map(projectConfig => (
-              <FormControlLabel
-                value={projectConfig.projectName}
-                control={<Radio />}
-                label={projectConfig.projectName}
-                key={projectConfig.projectName}
-              />
-            ))}
-          </RadioGroup>
-        </FormControl>
-
-        <button onClick={this.startSync}>Start</button>
+        <Grid container spacing={8}>
+          <Grid item md={12}>
+            <Paper className={classes.projectContainer}>
+              <RadioGroup
+                aria-label="porjectNames"
+                name="porjectNames"
+                value={this.state.targetProjectName}
+                onChange={this.changeProjectName}
+                className={classes.projectList}
+              >
+                {this.state.projectConfigs.map(projectConfig => (
+                  <FormControlLabel
+                    value={projectConfig.projectName}
+                    control={<Radio />}
+                    label={projectConfig.projectName}
+                    key={projectConfig.projectName}
+                    className="project-item"
+                  />
+                ))}
+              </RadioGroup>
+              <Button variant="raised" onClick={this.startSync}>
+                Start Sync!
+              </Button>
+            </Paper>
+          </Grid>
+          <Grid item md={12}>
+            <Paper>
+              <ReactJson src={this.state.targetProjectConfig} displayDataTypes={false} />
+            </Paper>
+          </Grid>
+        </Grid>
       </div>
     );
   }
 }
+
+Home.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(Home);
