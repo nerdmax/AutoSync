@@ -7,9 +7,9 @@
 // const myNotification = new Notification('Title', {
 //   body: 'Lorem Ipsum Dolor Sit Amet'
 // });
+import * as _ from 'lodash';
+import * as moment from 'moment';
 
-const _ = require('lodash');
-const moment = require('moment');
 const gulp = require('gulp');
 const runSequence = require('run-sequence');
 const concat = require('gulp-concat');
