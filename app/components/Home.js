@@ -21,7 +21,8 @@ const styles = {
     textAlign: 'center'
   },
   projectList: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'center'
   },
   projectItem: {}
 };
