@@ -18,7 +18,8 @@ const fs = require('fs');
 
 const styles = {
   projectContainer: {
-    textAlign: 'center'
+    textAlign: 'center',
+    padding: '10px'
   },
   projectList: {
     flexDirection: 'row',
@@ -38,8 +39,8 @@ class Home extends Component<> {
           .getAppPath()
           .replace('node_modules\\electron\\dist\\resources\\default_app.asar', '/app'))
         : remote.app.getAppPath();
-    console.log('remote.app.getAppPath()', remote.app.getAppPath());
-    console.log('this.appPath', this.appPath);
+    // console.log('remote.app.getAppPath()', remote.app.getAppPath());
+    // console.log('this.appPath', this.appPath);
     this.state = { projectConfigs: [], targetProjectName: '', targetProjectConfig: {} };
   }
 
@@ -55,8 +56,8 @@ class Home extends Component<> {
       }
       try {
         const configFileObj = JSON.parse(configFileData);
-        console.log(configFileObj);
-        this.setState({ projectConfigs: configFileObj.config }, () => console.log(this.state));
+        // console.log(configFileObj);
+        this.setState({ projectConfigs: configFileObj.config });
       } catch (error) {
         console.error('parse json error', error);
       }
@@ -70,33 +71,37 @@ class Home extends Component<> {
   };
 
   startSync = () => {
-    const displayPanelViewPath = path.join(this.appPath, 'display-panel/display-panel.html');
-    const { BrowserWindow } = remote;
-    const { targetProjectConfig } = this.state;
-    let ftpConfigInfo = {};
-    if (this.state.targetProjectConfig.ftpConfig !== '') {
-      const ftpConfigPath = path.join(
-        this.appPath,
-        `config/${this.state.targetProjectConfig.ftpConfig}`
-      );
-      ftpConfigInfo = JSON.parse(fs.readFileSync(ftpConfigPath, 'utf8'));
-    }
-    let win = new BrowserWindow({
-      title: targetProjectConfig.projectName
-    });
-    win.loadURL(displayPanelViewPath);
-    win.on('close', () => {
-      win = null;
-    });
-    win.webContents.on('did-finish-load', () => {
-      win.webContents.send('passInfo', {
-        targetProjectConfig,
-        ftpConfigInfo
+    if (this.state.targetProjectName !== '') {
+      const displayPanelViewPath = path.join(this.appPath, 'display-panel/display-panel.html');
+      const { BrowserWindow } = remote;
+      const { targetProjectConfig } = this.state;
+      let ftpConfigInfo = {};
+      if (this.state.targetProjectConfig.ftpConfig !== '') {
+        const ftpConfigPath = path.join(
+          this.appPath,
+          `config/${this.state.targetProjectConfig.ftpConfig}`
+        );
+        ftpConfigInfo = JSON.parse(fs.readFileSync(ftpConfigPath, 'utf8'));
+      }
+      let win = new BrowserWindow({
+        title: targetProjectConfig.projectName
       });
-      win.maximize();
-      win.webContents.openDevTools();
-    });
-    win.show();
+      win.loadURL(displayPanelViewPath);
+      win.on('close', () => {
+        win = null;
+      });
+      win.webContents.on('did-finish-load', () => {
+        win.webContents.send('passInfo', {
+          targetProjectConfig,
+          ftpConfigInfo
+        });
+        win.maximize();
+        win.webContents.openDevTools();
+      });
+      win.show();
+    } else {
+      console.log('Please select one project');
+    }
   };
 
   render() {
@@ -137,13 +142,15 @@ class Home extends Component<> {
                 ))}
               </RadioGroup>
               <Button variant="raised" onClick={this.startSync}>
-                Start Sync!
+                Start Sync !
               </Button>
             </Paper>
           </Grid>
           <Grid item md={12}>
             <Paper>
-              <ReactJson src={this.state.targetProjectConfig} displayDataTypes={false} />
+              {this.state.targetProjectName !== '' ? (
+                <ReactJson src={this.state.targetProjectConfig} displayDataTypes={false} />
+              ) : null}
             </Paper>
           </Grid>
         </Grid>
