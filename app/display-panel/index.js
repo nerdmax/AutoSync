@@ -169,7 +169,7 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
       .pipe(uglify())
       .pipe(gulp.dest(path.dirname(jsBundleFile))));
 
-  gulp.task('publishToServer', () => {
+  const publishToServer = () => {
     conn = setupftp();
     let totalFilesNO = 0;
 
@@ -188,9 +188,9 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
         .dest(uatpath)
         .on('end', () =>
           gutil.log(gutil.colors.green(`Publish ${totalFilesNO} files to ${gutil.colors.magenta(uatpath)} Successfully!`))));
-  });
+  };
 
-  gulp.task('auto', () => {
+  const rootTask = () => {
     // Set up browserSync
     browserSync.init({
       proxy: webUrl, // makes a proxy for localhost:
@@ -327,14 +327,14 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
         }
       }
     });
-  });
+  };
 
   const publishToServerBtn = document.getElementById('publishToServerBtn');
   console.log(publishToServerBtn);
   publishToServerBtn.onclick = function () {
     console.log('CLICKED');
-    gulp.start('publishToServer');
+    publishToServer();
   };
 
-  gulp.start('auto');
+  rootTask();
 });
