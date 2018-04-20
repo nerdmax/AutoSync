@@ -1,7 +1,7 @@
 # AutoSync
 
-[![NPM Version][npm-image]][npm-url]
-[![License Stats][npm-license]][npm-url]
+<!-- [![NPM Version][npm-image]][npm-url]
+[![License Stats][npm-license]][npm-url] -->
 [![Github stars][github-stars]][github-url]
 [![Github issues][github-issues]][github-issues-url]
 <!-- [![Build Status][travis-image]][travis-url] -->
