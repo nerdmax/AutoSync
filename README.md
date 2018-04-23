@@ -51,6 +51,10 @@ yarn run package
 * 0.1.0
     * The first proper release
     * CHANGE: Rename `foo()` to `bar()` -->
+* 0.0.2
+    * Fix some bugs
+    * Make landing page beautiful
+    * Display project name as the title of the child window
 * 0.0.1
     * 8 preset projects settings
     * Bundle & Uglify js files
