@@ -1,7 +1,7 @@
 {
   "name": "auto-sync",
   "productName": "AutoSync",
-  "version": "1.0.1",
+  "version": "0.0.2",
   "description": "It can proxy your exesing website to gain the auto bundling, minifying, reloading features. Besides, it can auto upload your changed files to another file system or a remote server via FTP!!!",
   "main": "./main.prod.js",
   "author": {
