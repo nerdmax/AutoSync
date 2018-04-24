@@ -14,17 +14,17 @@
       ],
 
       "devBasePath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/",
-      "destPaths": ["//wwsyd01/Custom Websites/BLC"],
-      "uatpath": "/BLCEcomm",
-      "uatlaterpath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/uatlater/",
+      "targetLocalPaths": ["//wwsyd01/Custom Websites/BLC/"],
+      "targetFtpPath": "/BLCEcomm",
+      "scheduledPath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/uatlater/",
       "webUrl": "localhost:30002",
       "browserSyncPortNO": "8402",
 
       "ftpConfig": "BLCWeb.ftp.json",
 
-      "isSta": true,
+      "syncLocal": true,
       "isUat": false,
-      "isUatLater": true
+      "syncScheduled": true
     },
     {
       "projectName": "BlcWeb.staging",
@@ -45,17 +45,17 @@
       ],
 
       "devBasePath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/",
-      "destPaths": [],
-      "uatpath": "/BLCEcomm - Staging",
-      "uatlaterpath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/uatlater/",
+      "targetLocalPaths": [],
+      "targetFtpPath": "/BLCEcomm - Staging",
+      "scheduledPath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/uatlater/",
       "webUrl": "localhost:30002",
       "browserSyncPortNO": "8411",
 
       "ftpConfig": "BLCWeb.ftp.json",
 
-      "isSta": false,
-      "isUat": true,
-      "isUatLater": false
+      "syncLocal": false,
+      "syncFtp": true,
+      "syncScheduled": false
     },
     {
       "projectName": "BlcWeb.Cms",
@@ -79,17 +79,17 @@
       ],
 
       "devBasePath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/",
-      "destPaths": ["//wwsyd01/Custom Websites/BLC Info"],
-      "uatpath": "/BLCCosmetics",
-      "uatlaterpath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/uatlater/",
+      "targetLocalPaths": ["//wwsyd01/Custom Websites/BLC Info/"],
+      "targetFtpPath": "/BLCCosmetics",
+      "scheduledPath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms/uatlater/",
       "webUrl": "localhost:30003",
       "browserSyncPortNO": "8403",
 
       "ftpConfig": "BLCWeb.ftp.json",
 
-      "isSta": true,
-      "isUat": true,
-      "isUatLater": true
+      "syncLocal": true,
+      "syncFtp": true,
+      "syncScheduled": true
     },
     {
       "projectName": "BlcWeb.Dashboard",
@@ -105,17 +105,17 @@
       ],
 
       "devBasePath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/",
-      "destPaths": ["//wwsyd01/Custom Websites/BLC"],
-      "uatpath": "/BLCEcomm",
-      "uatlaterpath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/uatlater/",
+      "targetLocalPaths": ["//wwsyd01/Custom Websites/BLC/"],
+      "targetFtpPath": "/BLCEcomm",
+      "scheduledPath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb/uatlater/",
       "webUrl": "localhost:30002",
       "browserSyncPortNO": "8404",
 
       "ftpConfig": "BLCWeb.ftp.json",
 
-      "isSta": true,
-      "isUat": true,
-      "isUatLater": false
+      "syncLocal": true,
+      "syncFtp": true,
+      "syncScheduled": false
     },
     {
       "projectName": "test",
@@ -126,17 +126,17 @@
       "cshtmlFiles": ["C:/code/php/hilliePersonalWeb/roua-wp/**/*.*"],
 
       "devBasePath": "C:/code/php/hilliePersonalWeb/roua-wp/",
-      "destPaths": [],
-      "uatpath": "/public_html/wp-content/themes/roua-wp",
-      "uatlaterpath": "",
+      "targetLocalPaths": [],
+      "targetFtpPath": "/public_html/wp-content/themes/roua-wp",
+      "scheduledPath": "",
       "webUrl": "http://hollietinworth.com.au/",
       "browserSyncPortNO": "40003",
 
       "ftpConfig": "hollie.ftp.json",
 
-      "isSta": false,
-      "isUat": true,
-      "isUatLater": false
+      "syncLocal": false,
+      "syncFtp": true,
+      "syncScheduled": false
     },
     {
       "projectName": "Vokins",
@@ -179,17 +179,17 @@
       ],
 
       "devBasePath": "C:/Max/SurgaPortalWebsites/Adept.WebSites/Vokins/Vokins/",
-      "destPaths": ["//wwsyd01/Umbraco/Vokins"],
-      "uatpath": "/site/wwwroot",
-      "uatlaterpath": "",
+      "targetLocalPaths": ["//wwsyd01/Umbraco/Vokins/"],
+      "targetFtpPath": "/site/wwwroot",
+      "scheduledPath": "",
       "webUrl": "localhost:10015",
       "browserSyncPortNO": "20015",
 
       "ftpConfig": "vokins.ftp.json",
 
-      "isSta": true,
-      "isUat": true,
-      "isUatLater": false
+      "syncLocal": true,
+      "syncFtp": true,
+      "syncScheduled": false
     },
     {
       "projectName": "DomainOffice",
@@ -232,17 +232,17 @@
       ],
 
       "devBasePath": "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/",
-      "destPaths": ["//wwsyd01/Umbraco/DOS"],
-      "uatpath": "/site/wwwroot",
-      "uatlaterpath": "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/uatlatertest/",
+      "targetLocalPaths": ["//wwsyd01/Umbraco/DOS/"],
+      "targetFtpPath": "/site/wwwroot",
+      "scheduledPath": "C:/Max/SurgaPortalWebsites/Adept.WebSites/DomainOffice/DomainOffice/uatlatertest/",
       "webUrl": "localhost:10018",
       "browserSyncPortNO": "20018",
 
       "ftpConfig": "DomainOffice.ftp.json",
 
-      "isSta": true,
-      "isUat": false,
-      "isUatLater": true
+      "syncLocal": true,
+      "syncFtp": false,
+      "syncScheduled": true
     },
     {
       "projectName": "Michelin",
@@ -256,17 +256,17 @@
       ],
 
       "devBasePath": "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/",
-      "destPaths": [""],
-      "uatpath": "",
-      "uatlaterpath": "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/uatlatertest/",
+      "targetLocalPaths": [],
+      "targetFtpPath": "",
+      "scheduledPath": "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/uatlatertest/",
       "webUrl": "localhost:8307",
       "browserSyncPortNO": "8407",
 
       "ftpConfig": "",
 
-      "isSta": false,
-      "isUat": false,
-      "isUatLater": false
+      "syncLocal": false,
+      "syncFtp": false,
+      "syncScheduled": false
     }
   ]
 }

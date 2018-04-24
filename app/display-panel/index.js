@@ -8,7 +8,7 @@
 // const myNotification = new Notification('Title', {
 //   body: 'Lorem Ipsum Dolor Sit Amet'
 // });
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
 import * as moment from 'moment';
 
 const gulp = require('gulp');
@@ -48,22 +48,22 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
     jsBundleFile,
     cshtmlFiles,
     devBasePath,
-    destPaths,
-    uatpath,
-    uatlaterpath,
+    targetLocalPaths,
+    targetFtpPath,
+    scheduledPath,
     webUrl,
     browserSyncPortNO,
-    isSta,
-    isUat,
-    isUatLater
+    syncLocal,
+    syncFtp,
+    syncScheduled
   } = targetProjectConfig;
 
   // *Log out mode status and check whether user has specified sta/uat details
   let devmodeflag = true;
-  // let isSta = argv.sta !== undefined ? true : false;
+  // let syncLocal = argv.sta !== undefined ? true : false;
 
   // sta mode
-  if (isSta) {
+  if (syncLocal) {
     devmodeflag = false;
     // if (stagingcompanyname == "") {
     // gutil.log(gutil.colors.green.bgWhite.bold("WARNING!!!!!!!!!!!!!!!!!!!!!!!!!!!: You tried to enter staging mode, but you didn't specify the stagingcompanyname"));
@@ -72,20 +72,20 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
     gutil.log(gutil.colors.red('WARNING: You are in staging mode, changes of .CSS, .jS, .CShtml will be published to staging server, be careful!!!'));
   }
   // uat mode
-  if (isUat) {
+  if (syncFtp) {
     devmodeflag = false;
     // if (publishfilename == "") {
     if (false) {
       gutil.log(gutil.colors.green.bgWhite.bold("WARNING!!!!!!!!!!!!!!!!!!!!!!!!!!!: You tried to publish files to uat server, but you didn't specify the publishfilename"));
       throw new Error('Something went badly wrong!');
     } else {
-      gutil.log(gutil.colors.green.bgWhite.bold(`WARNING!!!!!!!!!!!!!!!!!!!!!!!!!!!: You are in ------UAT_REAL------ mode, files will be published directly to ${gutil.colors.magenta(uatpath)} be very very careful!!!`));
+      gutil.log(gutil.colors.green.bgWhite.bold(`WARNING!!!!!!!!!!!!!!!!!!!!!!!!!!!: You are in ------UAT_REAL------ mode, files will be published directly to ${gutil.colors.magenta(targetFtpPath)} be very very careful!!!`));
     }
   }
   // uat_later mode
-  if (isUatLater) {
+  if (syncScheduled) {
     devmodeflag = false;
-    gutil.log(gutil.colors.green(`You are in uat_later mode, everything you changed will be copied into ${uatlaterpath}.You can use ${gutil.colors.magenta('gulp publishToServer')} to publish all files inside uatlater folder to uat server`));
+    gutil.log(gutil.colors.green(`You are in uat_later mode, everything you changed will be copied into ${scheduledPath}.You can use ${gutil.colors.magenta('gulp publishToServer')} to publish all files inside uatlater folder to uat server`));
   }
   // dev mode
   if (devmodeflag) {
@@ -113,7 +113,7 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
   // Setup FTP--------------------------------------------------------------------------------
   let conn = gulp;
   // Set up FTP connection
-  if (isUat) {
+  if (syncFtp) {
     conn = setupftp();
   }
   // Setup FTP end----------------------------------------------------------------------------
@@ -175,8 +175,8 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
     let totalFilesNO = 0;
 
     return gulp
-      .src([`${uatlaterpath}**/*`], {
-        base: uatlaterpath
+      .src([`${scheduledPath}**/*`], {
+        base: scheduledPath
       })
       .pipe(tap(file => {
         const ext = path.extname(file.path).substr(1); // remove leading "."
@@ -186,9 +186,9 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
         }
       }))
       .pipe(conn
-        .dest(uatpath)
+        .dest(targetFtpPath)
         .on('end', () =>
-          gutil.log(gutil.colors.green(`Publish ${totalFilesNO} files to ${gutil.colors.magenta(uatpath)} Successfully!`))));
+          gutil.log(gutil.colors.green(`Publish ${totalFilesNO} files to ${gutil.colors.magenta(targetFtpPath)} Successfully!`))));
   };
 
   const rootTask = () => {
@@ -203,32 +203,32 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
       if (vinyl.event === 'change' || vinyl.event === 'add') {
         processCSS(() => {
           // sta mode
-          if (isSta) {
+          if (syncLocal) {
             gulp
               .src(cssBundleFile, {
                 base: devBasePath
               })
-              .pipe(dest(destPaths))
-              .on('end', () => logOutput(vinyl, destPaths));
+              .pipe(dest(targetLocalPaths))
+              .on('end', () => logOutput(vinyl, targetLocalPaths));
           }
           // uat mode
-          if (isUat) {
+          if (syncFtp) {
             gulp
               .src(cssBundleFile, {
                 base: devBasePath
               })
               // .pipe(conn.newer('/site/wwwroot/deploytest'))
-              .pipe(conn.dest(uatpath))
-              .on('end', () => logOutput(vinyl, uatpath));
+              .pipe(conn.dest(targetFtpPath))
+              .on('end', () => logOutput(vinyl, targetFtpPath));
           }
           // uat_later mode
-          if (isUatLater) {
+          if (syncScheduled) {
             gulp
               .src(cssBundleFile, {
                 base: devBasePath
               })
-              .pipe(gulp.dest(uatlaterpath))
-              .on('end', () => logOutput(vinyl, uatlaterpath));
+              .pipe(gulp.dest(scheduledPath))
+              .on('end', () => logOutput(vinyl, scheduledPath));
           }
         });
       }
@@ -241,32 +241,32 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
           browserSync.reload();
 
           // sta mode
-          if (isSta) {
+          if (syncLocal) {
             gulp
               .src(jsBundleFile, {
                 base: devBasePath
               })
-              .pipe(dest(destPaths))
-              .on('end', () => logOutput(vinyl, destPaths));
+              .pipe(dest(targetLocalPaths))
+              .on('end', () => logOutput(vinyl, targetLocalPaths));
           }
           // uat mode
-          if (isUat) {
+          if (syncFtp) {
             gulp
               .src(jsBundleFile, {
                 base: devBasePath
               })
               // .pipe(conn.newer('/site/wwwroot/deploytest'))
-              .pipe(conn.dest(uatpath))
-              .on('end', () => logOutput(vinyl, uatpath));
+              .pipe(conn.dest(targetFtpPath))
+              .on('end', () => logOutput(vinyl, targetFtpPath));
           }
           // uat_later mode
-          if (isUatLater) {
+          if (syncScheduled) {
             gulp
               .src(jsBundleFile, {
                 base: devBasePath
               })
-              .pipe(gulp.dest(uatlaterpath))
-              .on('end', () => logOutput(vinyl, uatlaterpath));
+              .pipe(gulp.dest(scheduledPath))
+              .on('end', () => logOutput(vinyl, scheduledPath));
           }
         });
       }
@@ -278,32 +278,32 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
       console.log(vinyl);
       if (vinyl.event === 'change' || vinyl.event === 'add') {
         // sta mode
-        if (isSta) {
+        if (syncLocal) {
           gulp
             .src(vinyl.path, {
               base: devBasePath
             })
-            .pipe(dest(destPaths))
-            .on('end', () => logOutput(vinyl, destPaths));
+            .pipe(dest(targetLocalPaths))
+            .on('end', () => logOutput(vinyl, targetLocalPaths));
         }
         // uat mode
-        if (isUat) {
+        if (syncFtp) {
           gulp
             .src(vinyl.path, {
               base: devBasePath
             })
             // .pipe(conn.newer('/site/wwwroot/deploytest'))
-            .pipe(conn.dest(uatpath))
-            .on('end', () => logOutput(vinyl, uatpath));
+            .pipe(conn.dest(targetFtpPath))
+            .on('end', () => logOutput(vinyl, targetFtpPath));
         }
         // uat_later mode
-        if (isUatLater) {
+        if (syncScheduled) {
           gulp
             .src(vinyl.path, {
               base: devBasePath
             })
-            .pipe(gulp.dest(uatlaterpath))
-            .on('end', () => logOutput(vinyl, uatlaterpath));
+            .pipe(gulp.dest(scheduledPath))
+            .on('end', () => logOutput(vinyl, scheduledPath));
         }
       }
     });
