@@ -12,7 +12,6 @@ import * as _ from 'lodash';
 import * as moment from 'moment';
 
 const gulp = require('gulp');
-const runSequence = require('run-sequence');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const postcss = require('gulp-postcss');
@@ -139,7 +138,7 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
 
   document.querySelector('#message').innerHTML = 'Watching files';
 
-  gulp.task('processCSS', () => {
+  const processCSS = callBackFn => {
     const postcssPlugins = [
       autoprefixer({
         browsers: ['> 1%', 'last 2 versions']
@@ -156,10 +155,11 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
       .pipe(gulp.dest(path.dirname(cssBundleFile)))
       .pipe(browserSync.reload({
         stream: true
-      }));
-  });
+      }))
+      .on('end', () => callBackFn());
+  };
 
-  gulp.task('processJS', () =>
+  const processJS = callBackFn =>
     // Concat & Minfiy
     gulp
       .src(jsFiles, {
@@ -167,7 +167,8 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
       })
       .pipe(concat(path.basename(jsBundleFile)))
       .pipe(uglify())
-      .pipe(gulp.dest(path.dirname(jsBundleFile))));
+      .pipe(gulp.dest(path.dirname(jsBundleFile)))
+      .on('end', () => callBackFn());
 
   const publishToServer = () => {
     conn = setupftp();
@@ -200,7 +201,7 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
     // Process CSS files
     watch(cssFiles, vinyl => {
       if (vinyl.event === 'change' || vinyl.event === 'add') {
-        runSequence('processCSS', () => {
+        processCSS(() => {
           // Only for BLC's CSS files
           if (infoWebPath !== '') {
             gulp
@@ -245,7 +246,7 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
     // Process JS files
     watch(jsFiles, vinyl => {
       if (vinyl.event === 'change' || vinyl.event === 'add') {
-        runSequence('processJS', () => {
+        processJS(() => {
           browserSync.reload();
 
           // sta mode

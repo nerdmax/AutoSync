@@ -25,7 +25,6 @@
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
     "gulp-watch": "^5.0.0",
-    "run-sequence": "^2.2.1",
     "stream-combiner": "^0.2.2",
     "vinyl-ftp": "^0.6.1"
   }
