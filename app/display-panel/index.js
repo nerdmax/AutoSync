@@ -120,6 +120,7 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
   // Setup FTP end----------------------------------------------------------------------------
 
   const logOutput = (vinyl, destPath) => {
+    console.log("CALLING logOutput");
     let fileType = '';
     if (vinyl.extname.indexOf('css') !== -1) {
       fileType = 'CSS';
@@ -128,7 +129,7 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
     } else {
       fileType = 'OTHERS';
     }
-    const currentTime = moment().format('HH:mm:ss');
+    const currentTime = moment.default().format('HH:mm:ss');
     console.log(`${currentTime} - ${fileType} - ((${vinyl.path})) -> ((${destPath}))`);
   };
 
