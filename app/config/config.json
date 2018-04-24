@@ -20,7 +20,6 @@
       "webUrl": "localhost:30002",
       "browserSyncPortNO": "8402",
 
-      "infoWebPath": "C:/Max/ERP/BLC/blc-sweb-iis/BlcWeb.Cms",
       "ftpConfig": "BLCWeb.ftp.json",
 
       "isSta": true,
@@ -52,7 +51,6 @@
       "webUrl": "localhost:30002",
       "browserSyncPortNO": "8411",
 
-      "infoWebPath": "",
       "ftpConfig": "BLCWeb.ftp.json",
 
       "isSta": false,
@@ -87,7 +85,6 @@
       "webUrl": "localhost:30003",
       "browserSyncPortNO": "8403",
 
-      "infoWebPath": "",
       "ftpConfig": "BLCWeb.ftp.json",
 
       "isSta": true,
@@ -114,7 +111,6 @@
       "webUrl": "localhost:30002",
       "browserSyncPortNO": "8404",
 
-      "infoWebPath": "",
       "ftpConfig": "BLCWeb.ftp.json",
 
       "isSta": true,
@@ -136,7 +132,6 @@
       "webUrl": "http://hollietinworth.com.au/",
       "browserSyncPortNO": "40003",
 
-      "infoWebPath": "",
       "ftpConfig": "hollie.ftp.json",
 
       "isSta": false,
@@ -190,7 +185,6 @@
       "webUrl": "localhost:10015",
       "browserSyncPortNO": "20015",
 
-      "infoWebPath": "",
       "ftpConfig": "vokins.ftp.json",
 
       "isSta": true,
@@ -244,7 +238,6 @@
       "webUrl": "localhost:10018",
       "browserSyncPortNO": "20018",
 
-      "infoWebPath": "",
       "ftpConfig": "DomainOffice.ftp.json",
 
       "isSta": true,
@@ -269,7 +262,6 @@
       "webUrl": "localhost:8307",
       "browserSyncPortNO": "8407",
 
-      "infoWebPath": "C:/Max/ERP/Michelin/Publish",
       "ftpConfig": "",
 
       "isSta": false,

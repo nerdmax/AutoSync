@@ -53,7 +53,6 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
     uatlaterpath,
     webUrl,
     browserSyncPortNO,
-    infoWebPath,
     isSta,
     isUat,
     isUatLater
@@ -203,15 +202,6 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
     watch(cssFiles, vinyl => {
       if (vinyl.event === 'change' || vinyl.event === 'add') {
         processCSS(() => {
-          // Only for BLC's CSS files
-          if (infoWebPath !== '') {
-            gulp
-              .src(cssBundleFile, {
-                base: devBasePath
-              })
-              .pipe(gulp.dest(infoWebPath))
-              .on('end', () => logOutput(vinyl, infoWebPath));
-          }
           // sta mode
           if (isSta) {
             gulp
@@ -285,18 +275,6 @@ require('electron').ipcRenderer.on('passInfo', (event, message) => {
     // Process cshtml files
     watch(cshtmlFiles, vinyl => {
       browserSync.reload();
-      // Only for BLC's main.js files
-      if (infoWebPath !== '') {
-        if (vinyl.path.split('\\')[vinyl.path.split('\\').length - 1] === 'main.js') {
-          gulp
-            .src(vinyl.path, {
-              base: devBasePath
-            })
-            .pipe(gulp.dest(infoWebPath))
-            .on('end', () => logOutput(vinyl, infoWebPath));
-        }
-      }
-
       console.log(vinyl);
       if (vinyl.event === 'change' || vinyl.event === 'add') {
         // sta mode
