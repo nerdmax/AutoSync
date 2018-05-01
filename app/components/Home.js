@@ -160,7 +160,7 @@ class Home extends Component<> {
 }
 
 Home.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(Home);
