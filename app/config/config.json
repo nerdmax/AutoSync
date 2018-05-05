@@ -23,7 +23,7 @@
       "ftpConfig": "BLCWeb.ftp.json",
 
       "syncLocal": true,
-      "isUat": false,
+      "syncFtp": false,
       "syncScheduled": true
     },
     {
