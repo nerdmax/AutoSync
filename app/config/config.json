@@ -267,6 +267,31 @@
       "syncLocal": false,
       "syncFtp": false,
       "syncScheduled": false
+    },
+    {
+      "projectName": "Michelin.CMS",
+      "cssFiles": [],
+      "cssBundleFile": "",
+      "jsFiles": [],
+      "jsBundleFile": "",
+      "cshtmlFiles": [
+        "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb.Cms/Views/**/*.cshtml",
+        "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb.Cms/App_Plugins/**/*.*",
+        "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb.Cms/bin/**/*.dll"
+      ],
+
+      "devBasePath": "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb.Cms/",
+      "targetLocalPaths": [],
+      "targetFtpPath": "",
+      "scheduledPath": "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb.Cms/uatlatertest/",
+      "webUrl": "localhost:8309",
+      "browserSyncPortNO": "8409",
+
+      "ftpConfig": "",
+
+      "syncLocal": false,
+      "syncFtp": false,
+      "syncScheduled": false
     }
   ]
 }
