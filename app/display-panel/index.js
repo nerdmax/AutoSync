@@ -62,7 +62,9 @@ electron.ipcRenderer.on('passInfo', (event, message) => {
         syncScheduled
       } = targetProjectConfig;
 
-      this.state = { targetProjectConfig };
+      this.state = {
+        targetProjectConfig
+      };
 
       // *Log out mode status and check whether user has specified sta/uat details
       // sta mode
@@ -135,6 +137,7 @@ electron.ipcRenderer.on('passInfo', (event, message) => {
       document.querySelector('#message').innerHTML = 'Watching files';
 
       const processCSS = callBackFn => {
+        console.log('processCSS');
         const postcssPlugins = [
           autoprefixer({
             browsers: ['> 1%', 'last 2 versions']
@@ -155,9 +158,9 @@ electron.ipcRenderer.on('passInfo', (event, message) => {
           .on('end', () => callBackFn());
       };
 
-      const processJS = callBackFn =>
-        // Concat & Minfiy
-        gulp
+      const processJS = callBackFn => {
+        console.log('processJS');
+        return gulp
           .src(jsFiles, {
             base: devBasePath
           })
@@ -165,6 +168,7 @@ electron.ipcRenderer.on('passInfo', (event, message) => {
           .pipe(uglify())
           .pipe(gulp.dest(path.dirname(jsBundleFile)))
           .on('end', () => callBackFn());
+      };
 
       const publishToServer = () => {
         conn = setupftp();
@@ -270,8 +274,9 @@ electron.ipcRenderer.on('passInfo', (event, message) => {
 
         // Process cshtml files
         watch(cshtmlFiles, vinyl => {
+          console.log('processHtml');
           browserSync.reload();
-          console.log(vinyl);
+          // console.log(vinyl);
           if (vinyl.event === 'change' || vinyl.event === 'add') {
             // sta mode
             if (syncLocal) {
