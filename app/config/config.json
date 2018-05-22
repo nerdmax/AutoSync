@@ -245,7 +245,7 @@
       "syncScheduled": true
     },
     {
-      "projectName": "Michelin",
+      "projectName": "Michelin Webpack dev server",
       "cssFiles": ["C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/dist/styles.css"],
       "cssBundleFile": "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/dist/styles.min.css",
       "jsFiles": [],
@@ -261,6 +261,31 @@
       "scheduledPath": "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/uatlatertest/",
       "webUrl": "localhost:8307",
       "browserSyncPortNO": "8407",
+
+      "ftpConfig": "",
+
+      "syncLocal": false,
+      "syncFtp": false,
+      "syncScheduled": false
+    },
+    {
+      "projectName": "Michelin",
+      "cssFiles": ["C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/dist/styles.css"],
+      "cssBundleFile": "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/dist/styles.min.css",
+      "jsFiles": [],
+      "jsBundleFile": "",
+      "cshtmlFiles": [
+        "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/dist/bundle.js",
+        "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/Views/**/*.*",
+        "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/bin/**/*.dll"
+      ],
+
+      "devBasePath": "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/",
+      "targetLocalPaths": [],
+      "targetFtpPath": "",
+      "scheduledPath": "C:/Max/ERP/Michelin/xma-sweb-iis/MaWeb/uatlatertest/",
+      "webUrl": "localhost:8306",
+      "browserSyncPortNO": "8406",
 
       "ftpConfig": "",
 
