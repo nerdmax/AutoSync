@@ -152,9 +152,6 @@ electron.ipcRenderer.on('passInfo', (event, message) => {
           .pipe(concat(path.basename(cssBundleFile)))
           .pipe(postcss(postcssPlugins))
           .pipe(gulp.dest(path.dirname(cssBundleFile)))
-          .pipe(browserSync.reload({
-            stream: true
-          }))
           .on('end', () => callBackFn());
       };
 
@@ -202,8 +199,11 @@ electron.ipcRenderer.on('passInfo', (event, message) => {
         watch(cssFiles, vinyl => {
           if (vinyl.event === 'change' || vinyl.event === 'add') {
             processCSS(() => {
+              browserSync.reload('*.css');
+              console.log('Calling callback function');
               // sta mode
               if (syncLocal) {
+                console.log('css sta mode');
                 gulp
                   .src(cssBundleFile, {
                     base: devBasePath
