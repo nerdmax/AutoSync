@@ -1,5 +1,7 @@
 # AutoSync
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/nerdmax/AutoSync.svg)](https://greenkeeper.io/)
+
 <!-- [![NPM Version][npm-image]][npm-url]
 [![License Stats][npm-license]][npm-url] -->
 [![Github stars][github-stars]][github-url]
